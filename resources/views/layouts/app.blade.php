@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Kassandra Klassen') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -41,7 +41,7 @@
                     <ul class="nav navbar-nav">
                       <li><a href="">Upcoming Shows</a></li>
                       <li><a href="">Upcoming Projects</a></li>
-                      <li><a href="">About</a></li>
+                      <li><a href="{{route('about')}}">About Kassandra</a></li>
                       <li><a href="">Contact</a></li>
                       <li><a href="">****************</a></li>
                       <li><a href="">Cool Asterixes</a></li>
