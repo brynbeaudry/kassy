@@ -3,28 +3,29 @@
 namespace App;
 
 use Intervention\Image\Facades\Image;
-use Intervention\Image\ImageManager;
 
 class ImageHelper
 {
+    //creates blobs of the thumbnail and and full imnage for saving into the database
     public function process_image(& $image_array){
       $rnd_str = str_random(20);
       $tmp_path = "tmp/$rnd_str." . "png";
       $tmp_url = public_path($tmp_path);
       $local = Image::make($image_array['img'])
       /* resize only the height of the canvas */
-      ->resizeCanvas(640, 640)
+      ->resizeCanvas(1080, 1080)
       /*resize the image to a height of 1080, constrain spect ration */
-      ->resize(null,640, function ($constraint) {
+      ->resize(null,1080, function ($constraint) {
               $constraint->upsize();
               $constraint->aspectRatio();
       })
       ->save($tmp_url);
+      $thumbsize = 150;
       if(Image::make($tmp_url)->exif() !== null)
         $local =  Image::make($tmp_url)->orientate()->save();
       $image_array['img'] = (string) $local->encode('data-url', 100);
-      $thumb_canvas = Image::canvas(150, 150, '#ffffff');
-      $thumb = Image::make($local)->resize(150, 150, function ($c) {
+      $thumb_canvas = Image::canvas($thumbsize, $thumbsize, '#ffffff');
+      $thumb = Image::make($local)->resize($thumbsize, $thumbsize, function ($c) {
         $c->aspectRatio();
         $c->upsize();
       })->save($tmp_url);
@@ -35,15 +36,5 @@ class ImageHelper
           echo 'file not found';
           throw new Exception("Error Processing Image, check tmp", 1);
       }
-    }
-
-    public function makeImageResponseFromDataUrl($du) {
-      return Image::make($du)->response('jpeg');
-    }
-
-    public function makeCachedImageFromDataUrl($id){
-      $img = Image::cache(function($image) {
-          $image->make('public/foo.jpg');
-      }, 10, true);
     }
 }

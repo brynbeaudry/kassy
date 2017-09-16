@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Picture;
 use App\ImageHelper;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
@@ -39,32 +40,31 @@ class PictureController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        if(isset($request->image)){
-          $i = $request->image;
+        if(isset($request->picture)){
+          $pic = $request->picture;
           $ajax = 1;
         }else{
-          $i = $request->all();
+          $pic = $request->all();
           $ajax = 0;
         }
         DB::beginTransaction();
         try {
           $img_helper = new ImageHelper;
           //0 is the fullsize, 1 is the thumb
-          $i['thumb'] = '';
-          $img_helper->process_image($i);
-          //dd($i);
+          $pic['thumb'] = '';
+          $img_helper->process_image($pic);
+
         } catch (Exception $e) {
           DB::rollBack();
-          //dd($e , $i);
         }
         try {
-          //dd($i);
-          $image = Picture::create($i);
+          $picture = Picture::create($pic);
         } catch (\Illuminate\Database\QueryException $e) {
+          //dd($e);
           DB::rollback();
           return response()->json(array("success" => 0), 200);
         }
-        if(!$image){
+        if(!$picture){
           DB::rollback();
           return response()->json(array("success" => 0), 200);
         }
@@ -78,7 +78,7 @@ class PictureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Image  $image
+     * @param  \App\Picture  $image
      * @return \Illuminate\Http\Response
      */
     public function show(Picture $image)
@@ -89,19 +89,21 @@ class PictureController extends Controller
 
     public function fullUrl($id)
     {
-        dd('hello');
+        $p = Picture::findOrFail($id);
+        return Image::make($p->img)->response('jpg');
     }
 
 
     public function thumbUrl($id)
     {
-        dd('hello');
+        $p = Picture::findOrFail($id);
+        return Image::make($p->thumb)->response('jpg');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Image  $image
+     * @param  \App\Picture  $image
      * @return \Illuminate\Http\Response
      */
     public function edit(Picture $image)
@@ -113,7 +115,7 @@ class PictureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Image  $image
+     * @param  \App\Picture  $image
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Picture $image)
@@ -124,13 +126,13 @@ class PictureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Image  $image
+     * @param  \App\Picture  $image
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        Picture::destroy($id);
+        Picture::destroy($picd);
         return redirect()->route('admin');
 
     }
