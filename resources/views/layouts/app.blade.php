@@ -13,6 +13,23 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap-theme.min.css')}}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/include/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
+    <style media="screen">
+
+      body{
+        font-family: Raleway,sans-serif;
+      }
+
+
+      #main-nav{
+        position : fixed;
+      }
+    </style>
+
     @yield('styles')
 </head>
 <body>

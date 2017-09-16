@@ -9,6 +9,11 @@
   margin-right: 1em;
 }
 
+.gi-2x{font-size: 2em;}
+.gi-3x{font-size: 3em;}
+.gi-4x{font-size: 4em;}
+.gi-5x{font-size: 5em;}
+
 #lean_overlay {
   position: fixed;
   z-index:100;
@@ -20,21 +25,16 @@
   display: none;
 }
 
+
+
 </style>
 @endsection
 @section('scripts')
-<script type='text/javascript' src="{{ asset('js/jquery.min.js') }}"></script>
 <script type='text/javascript'  src="{{ asset('js/jquery.mobile.customized.min.js')}}"></script>
 <script type='text/javascript' src="{{ asset('js/load-image.all.min.js') }}"></script>
 <script type='text/javascript' src="{{ asset('js/jquery.Jcrop.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/load-img-adapter.js') }}"></script>
-<script type="text/javascript">
-$("#img-select-button").on('click',function(event) {
-  event.preventDefault();
-  /* Act on the event */
-  $('#file-input').click();
-});
-</script>
+<script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 
 
 @endsection
@@ -45,7 +45,7 @@ $("#img-select-button").on('click',function(event) {
     <div class="col-md-6 col-xs-12">
       <div class="panel panel-default">
         <div id="upload-form-div" class="panel-body text-center">
-          <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="/image">
+          <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="/pictures">
             {{ csrf_field() }}
 
             <h4>Post an Artwork</h4>
@@ -83,10 +83,15 @@ $("#img-select-button").on('click',function(event) {
   <div class="panel panel-default">
     <div id="upload-list" class="panel-body text-center">
       <div class="list-group">
-        @foreach($images as $i)
-        <a href="#" class="list-group-item">
+        @foreach($pictures as $i)
+        <a href="" class="list-group-item">
           <img src="{{$i->thumb}}" alt="" style="float-left">
-          <span>{{$i->name}}</span>
+          <span class="float-left">
+            {{$i->name}}
+          </span>
+          <span id="delete" data-id="{{$i->id}}" class="float-left btn btn-xs btn-default" class="">
+            <span class="glyphicon glyphicon-remove gi-2x"></span>
+          </span>
         </a>
         @endforeach
       </div>

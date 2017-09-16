@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Image;
+use App\Picture;
 use App\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
-class ImageController extends Controller
+class PictureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -59,7 +59,7 @@ class ImageController extends Controller
         }
         try {
           //dd($i);
-          $image = Image::create($i);
+          $image = Picture::create($i);
         } catch (\Illuminate\Database\QueryException $e) {
           DB::rollback();
           return response()->json(array("success" => 0), 200);
@@ -81,9 +81,21 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show(Picture $image)
     {
         //
+    }
+
+
+    public function fullUrl($id)
+    {
+        dd('hello');
+    }
+
+
+    public function thumbUrl($id)
+    {
+        dd('hello');
     }
 
     /**
@@ -92,7 +104,7 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit(Picture $image)
     {
         //
     }
@@ -104,7 +116,7 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(Request $request, Picture $image)
     {
         //
     }
@@ -118,7 +130,7 @@ class ImageController extends Controller
     public function destroy($id)
     {
         //
-        Image::destroy($id);
+        Picture::destroy($id);
         return redirect()->route('admin');
 
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ImageHelper;
-use App\Image;
+use App\Picture;
 
 class AdminController extends Controller
 {
@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
-        return view('admin', ['images'=>$images]);
+        $pictures = Picture::all();
+        return view('admin', ['pictures'=>$pictures]);
     }
 }

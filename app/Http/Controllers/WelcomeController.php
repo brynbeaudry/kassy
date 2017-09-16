@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Image;
+use App\Picture;
 
 class WelcomeController extends Controller
 {
@@ -14,7 +14,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
-        return view('welcome', ['images'=>$images]);
+        $pictures = Picture::all();
+        return view('welcome', ['pictures'=>$pictures]);
     }
 }

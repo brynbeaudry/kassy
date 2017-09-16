@@ -8,12 +8,10 @@
         height: 10em;
     }
   /*This is how you can actually get the image*/
-  /*
     .cameraSlide.cameracurrent {
         width: 200px;
         height: 200px;
     }
-*/
     #img-modal {
       /*position: absolute !important;*/
     }
@@ -38,7 +36,7 @@
   </style>
 @endsection
 @section('scripts')
-<script type='text/javascript' src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type='text/javascript' src="{{ asset('js/jquery.min.js') }}"></script>
   <script type='text/javascript'  src="{{ asset('js/jquery.mobile.customized.min.js')}}"></script>
   <script type='text/javascript'  src="{{ asset('js/jquery.easing.1.3.js')}}"></script>
   <script type='text/javascript' src="{{ asset('js/camera.min.js')}}"></script>
@@ -47,18 +45,16 @@
   <script>
   $(function(){
     var thumbnail_div_height = $("#img-thumbnails").height()
+
     $('#camera_wrap').camera({
         loader: 'none',
 				pagination: false,
 				thumbnails: true,
 				hover: false,
 				opacityOnGrid: false,
-				imagePath: '',
         height: '100%',
         barPosition: 'top',
         time : 10000,
-
-
     });
 /*jQuery('#camera_wrap_2').camera({
   height: '400px',
@@ -73,11 +69,13 @@
 </script>
 <script type="text/javascript">
 $(window).on("load", function() {
+
   $('.pix_thumb img').each(function(index, el) {
       $(el).addClass('slide-thumbnails');
   });
   console.log($('#camera_wrap div.camera_thumbs_cont > div > ul'));
   $('#camera_wrap div.camera_thumbs_cont > div > ul').attr('style', 'margin-left: 0px');
+
 });
 $('#img-thumbnails img').on('click', function(event) {
   event.preventDefault();
@@ -100,7 +98,6 @@ $('#img-thumbnails img').on('click', function(event) {
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!--<img class="img-responsive" src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" alt=""> -->
-                    <!--
                     <div class="camera_wrap camera-emboss" id="camera_wrap">
                       <div data-thumb="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" data-src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg"><div class="camera_caption fadeFromBottom">"Blues," 2016
                         &NewLine;mixed media on panel</div></div>
@@ -110,11 +107,11 @@ $('#img-thumbnails img').on('click', function(event) {
 &NewLine;mixed media on panel</div></div>
                       <div data-thumb="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg" data-src="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg"><div class="camera_caption fadeFromBottom">"Reflection" (Study), 2017
 &NewLine;mixed media on panel.</div></div>
-                      -->
-                      @foreach($images as $i)
-                      <div data-thumb="{{$i->img}}" data-src="{{$i->thumb}}" data-portrait="true"><div class="camera_caption fadeFromBottom">{{$i->name}}</div></div>
+                      @foreach($pictures as $i)
+                      <div data-thumb="{{$i->thumb}}" data-src="{{$i->img}}">
+                      <div class="camera_caption fadeFromBottom">{{$i->name}}</div>
+                      </div>
                       @endforeach
-
                     </div>
                 </div>
             </div>

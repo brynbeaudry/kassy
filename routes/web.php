@@ -15,7 +15,10 @@ Route::get('/','WelcomeController@index')->name('welcome');
 Route::get('/about', 'AboutController@index')->name('about');
 
 //Auth::routes();
-Route::resource('image', 'ImageController');
+Route::resource('pictures', 'PictureController');
+Route::get('/pictures/{id}/img', 'PictureController@fullUrl');
+Route::get('/pictures/{id}/thumb', 'PictureController@thumbUrl');
+
 Route::resource('posts', 'PostController');
 //Route::resource('events', 'EventController');
 

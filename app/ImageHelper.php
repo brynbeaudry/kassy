@@ -3,6 +3,7 @@
 namespace App;
 
 use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
 
 class ImageHelper
 {
@@ -12,9 +13,9 @@ class ImageHelper
       $tmp_url = public_path($tmp_path);
       $local = Image::make($image_array['img'])
       /* resize only the height of the canvas */
-      ->resizeCanvas(1080, 1080)
+      ->resizeCanvas(640, 640)
       /*resize the image to a height of 1080, constrain spect ration */
-      ->resize(null,1080, function ($constraint) {
+      ->resize(null,640, function ($constraint) {
               $constraint->upsize();
               $constraint->aspectRatio();
       })
@@ -34,5 +35,15 @@ class ImageHelper
           echo 'file not found';
           throw new Exception("Error Processing Image, check tmp", 1);
       }
+    }
+
+    public function makeImageResponseFromDataUrl($du) {
+      return Image::make($du)->response('jpeg');
+    }
+
+    public function makeCachedImageFromDataUrl($id){
+      $img = Image::cache(function($image) {
+          $image->make('public/foo.jpg');
+      }, 10, true);
     }
 }
