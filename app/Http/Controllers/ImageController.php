@@ -52,7 +52,7 @@ class ImageController extends Controller
           //0 is the fullsize, 1 is the thumb
           $i['thumb'] = '';
           $img_helper->process_image($i);
-          dd($i);
+          //dd($i);
         } catch (Exception $e) {
           DB::rollBack();
           //dd($e , $i);
