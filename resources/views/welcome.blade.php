@@ -108,7 +108,7 @@ $('#img-thumbnails img').on('click', function(event) {
                       <div data-thumb="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg" data-src="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg"><div class="camera_caption fadeFromBottom">"Reflection" (Study), 2017
 &NewLine;mixed media on panel.</div></div>
                       @foreach($pictures as $i)
-                      <div data-thumb="{{$i->thumb}}" data-src="{{$i->img}}">
+                      <div data-thumb="/pictures/{{$i->id}}/thumb" data-src="/pictures/{{$i->id}}/img">
                       <div class="camera_caption fadeFromBottom">{{$i->name}}</div>
                       </div>
                       @endforeach
