@@ -96,11 +96,12 @@ $(function () {
     var target = e.dataTransfer || e.target
     var file = target && target.files && target.files[0]
     var options = {
-      maxWidth: result.width(),
-      canvas: true,
-      pixelRatio: window.devicePixelRatio,
-      downsamplingRatio: 0.5,
-      orientation: true
+      maxWidth: 1080,
+      maxHeight : 1080,
+      orientation: true,
+      canvas : true,
+      contain : true,
+      pixelRatio : window.devicePixelRatio
     }
     if (!file) {
       return

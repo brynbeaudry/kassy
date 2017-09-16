@@ -29,11 +29,11 @@
 <script type='text/javascript' src="{{ asset('js/jquery.Jcrop.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/load-img-adapter.js') }}"></script>
 <script type="text/javascript">
-  $("#img-select-button").on('click',function(event) {
-    event.preventDefault();
-    /* Act on the event */
-    $('#file-input').click();
-  });
+$("#img-select-button").on('click',function(event) {
+  event.preventDefault();
+  /* Act on the event */
+  $('#file-input').click();
+});
 </script>
 
 
@@ -45,7 +45,7 @@
     <div class="col-md-6 col-xs-12">
       <div class="panel panel-default">
         <div id="upload-form-div" class="panel-body text-center">
-          <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="/posts">
+          <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="/image">
             {{ csrf_field() }}
 
             <h4>Post an Artwork</h4>
@@ -57,39 +57,46 @@
             </div>
             <!--
             <p id="actions" style="display:none;">
-            	<button type="button" id="edit">Edit</button>
-            	<button type="button" id="crop">Crop</button>
-            </p>
-            -->
-            <div id="exif" class="exif" style="display:none;">
-              <h2></h2>
-              <p id="thumbnail" class="thumbnail" style="display:none;"></p>
-              <table></table>
-            </div>
-            <div class="form-group" style="padding:14px;">
-              <input type="text" class="form-control" placeholder="Name" name="name"></input>
-            </div>
-            <div class="form-group" style="padding:14px;">
-              <textarea class="form-control" placeholder="Description" name="text"></textarea>
-            </div>
-            <button class="btn btn-primary pull-right" type="submit">Add Image to Gallery</button><ul class="list-inline"><li><a role="button" id="profile_cam_button" href="">
-            </form>
-
-          </div>
+            <button type="button" id="edit">Edit</button>
+            <button type="button" id="crop">Crop</button>
+          </p>
+        -->
+        <div id="exif" class="exif" style="display:none;">
+          <h2></h2>
+          <p id="thumbnail" class="thumbnail" style="display:none;"></p>
+          <table></table>
         </div>
-      </div>
-      <!--List of Images in Database -->
-      <div class="col-md-6 col-xs-12">
-        <div class="panel panel-default">
-          <div id="upload-list" class="panel-body text-center">
-
-          </div>
+        <div class="form-group" style="padding:14px;">
+          <input type="text" class="form-control" placeholder="Name" name="name"></input>
         </div>
-      </div>
-      <a href="#img-modal" id="show-modal" rel="leanModal" name="img-modal"></a>
-      <div id="img-modal" width="100%">
+        <div class="form-group" style="padding:14px;">
+          <textarea class="form-control" placeholder="Description" name="text"></textarea>
+        </div>
+        <button class="btn btn-primary pull-right" role="button" type="submit">Add Image to Gallery</button>
+      </form>
 
+    </div>
+  </div>
+</div>
+<!--List of Images in Database -->
+<div class="col-md-6 col-xs-12">
+  <div class="panel panel-default">
+    <div id="upload-list" class="panel-body text-center">
+      <div class="list-group">
+        @foreach($images as $i)
+        <a href="#" class="list-group-item">
+          <img src="{{$i->thumb}}" alt="" style="float-left">
+          <span>{{$i->name}}</span>
+        </a>
+        @endforeach
       </div>
     </div>
   </div>
-  @endsection
+</div>
+<a href="#img-modal" id="show-modal" rel="leanModal" name="img-modal"></a>
+<div id="img-modal" width="100%">
+
+</div>
+</div>
+</div>
+@endsection

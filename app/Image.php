@@ -11,7 +11,7 @@ class Image extends Model
 {
     //
     protected $fillable = [
-        'name','text', 'img',
+        'name','text', 'img', 'thumb',
     ];
 
     protected $table = 'images';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Image;
+use App\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
@@ -37,8 +38,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
+        //dd($request->all());
         if(isset($request->image)){
           $i = $request->image;
           $ajax = 1;
@@ -46,11 +46,18 @@ class ImageController extends Controller
           $i = $request->all();
           $ajax = 0;
         }
-
-        //dd($image);
-
         DB::beginTransaction();
         try {
+          $img_helper = new ImageHelper;
+          //0 is the fullsize, 1 is the thumb
+          $i['thumb'] = '';
+          $img_helper->process_image($i);
+        } catch (Exception $e) {
+          DB::rollBack();
+          //dd($e , $i);
+        }
+        try {
+          //dd($i);
           $image = Image::create($i);
         } catch (\Illuminate\Database\QueryException $e) {
           DB::rollback();
@@ -64,7 +71,7 @@ class ImageController extends Controller
         if($ajax)
           return response()->json(array("success" => 1, "redirect" => $redirect), 200);
         else
-          return  redirect()->route('admin');
+          return  redirect()->action('AdminController@index');
     }
 
     /**

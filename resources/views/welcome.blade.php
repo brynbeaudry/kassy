@@ -8,19 +8,21 @@
         height: 10em;
     }
   /*This is how you can actually get the image*/
+  /*
     .cameraSlide.cameracurrent {
         width: 200px;
         height: 200px;
     }
-
+*/
     #img-modal {
       /*position: absolute !important;*/
     }
-
+    /*
     #welcome.container {
       margin-left: 1em;
       margin-right: 1em;
     }
+    */
 
     #lean_overlay {
     position: fixed;
@@ -51,7 +53,7 @@
 				thumbnails: true,
 				hover: false,
 				opacityOnGrid: false,
-				imagePath: '../images/',
+				imagePath: '',
         height: '100%',
         barPosition: 'top',
         time : 10000,
@@ -98,20 +100,26 @@ $('#img-thumbnails img').on('click', function(event) {
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!--<img class="img-responsive" src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" alt=""> -->
+                    <!--
                     <div class="camera_wrap camera-emboss" id="camera_wrap">
                       <div data-thumb="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" data-src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg"><div class="camera_caption fadeFromBottom">"Blues," 2016
-                        mixed media on panel</div></div>
+                        &NewLine;mixed media on panel</div></div>
                       <div data-thumb="https://img0.etsystatic.com/191/0/10139773/il_570xN.1273425620_iyrp.jpg" data-src="https://img0.etsystatic.com/191/0/10139773/il_570xN.1273425620_iyrp.jpg"><div class="camera_caption fadeFromBottom">(summer study), 2017
-mixed media on panel</div></div>
+&NewLine;mixed media on panel</div></div>
                       <div data-thumb="https://img1.etsystatic.com/203/0/10139773/il_570xN.1320644685_g1gr.jpg" data-src="https://img1.etsystatic.com/203/0/10139773/il_570xN.1320644685_g1gr.jpg"><div class="camera_caption fadeFromBottom">"From Above," 2017
-mixed media on panel</div></div>
+&NewLine;mixed media on panel</div></div>
                       <div data-thumb="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg" data-src="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg"><div class="camera_caption fadeFromBottom">"Reflection" (Study), 2017
-mixed media on panel.</div></div>
+&NewLine;mixed media on panel.</div></div>
+                      -->
+                      @foreach($images as $i)
+                      <div data-thumb="{{$i->img}}" data-src="{{$i->thumb}}" data-portrait="true"><div class="camera_caption fadeFromBottom">{{$i->name}}</div></div>
+                      @endforeach
+
                     </div>
                 </div>
             </div>
         </div>
-        <!--Another panel -->
+        <!--Etsy Images -->
         <div class="col-md-6 col-xs-12">
             <div class="panel panel-default">
                 <div id="img-thumbnails" class="panel-body text-center">

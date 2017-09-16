@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/about', function(){ return view('about');})->name('about');
+Route::get('/','WelcomeController@index')->name('welcome');
+Route::get('/about', 'AboutController@index')->name('about');
 
 //Auth::routes();
+Route::resource('image', 'ImageController');
+Route::resource('posts', 'PostController');
+//Route::resource('events', 'EventController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
