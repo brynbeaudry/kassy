@@ -30,9 +30,6 @@ class ImageHelper
       $image_array['thumb'] = (string) $thumb->encode('data-url', 100);
       if(file_exists($tmp_url)){
           unlink($tmp_url);
-          echo "<img src='$fullsize_img' />";
-          echo "<img src='$img' />";
-          echo "<img src='$thumb' />";
       }else{
           echo 'file not found';
           throw new Exception("Error Processing Image, check tmp", 1);
