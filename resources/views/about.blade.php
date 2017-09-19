@@ -47,7 +47,7 @@ $(function(){
     imagePath: '../images/',
     height: '' + height + 'px',
     barPosition: 'top',
-    time : 2000,
+    time : 5000,
 
 
   });
@@ -102,10 +102,11 @@ $(function(){
         <div class="panel-body">
           <!--<img class="img-responsive" src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" alt=""> -->
           <div class="camera_wrap camera-emboss" id="camera_wrap">
-            <div data-thumb="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" data-src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg"></div>
-            <div data-thumb="https://img0.etsystatic.com/191/0/10139773/il_570xN.1273425620_iyrp.jpg" data-src="https://img0.etsystatic.com/191/0/10139773/il_570xN.1273425620_iyrp.jpg"></div>
-            <div data-thumb="https://img1.etsystatic.com/203/0/10139773/il_570xN.1320644685_g1gr.jpg" data-src="https://img1.etsystatic.com/203/0/10139773/il_570xN.1320644685_g1gr.jpg"></div>
-            <div data-thumb="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg" data-src="https://img1.etsystatic.com/182/0/10139773/il_570xN.1320664323_1fav.jpg"></div>
+            @foreach($pictures as $i)
+            <div data-thumb="/pictures/{{$i->id}}/thumb" data-src="/pictures/{{$i->id}}/img" data-link="/pictures/{{$i->id}}/img" data-target="#img-modal">
+              <div class="camera_caption fadeFromBottom">{{$i->name}} {{$i->text}}</div>
+            </div>
+            @endforeach
           </div>
         </div>
       </div>

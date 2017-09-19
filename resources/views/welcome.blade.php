@@ -56,7 +56,7 @@
 				opacityOnGrid: false,
         height: '100%',
         barPosition: 'top',
-        time : 10000,
+        time : 5000,
     });
     /*
     $('a.camera_link').on('click', function(event) {
@@ -95,7 +95,7 @@ $(window).on("load", function() {
 @section('content')
 <div class="container" id="welcome">
     <div class="row">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-8 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!--<img class="img-responsive" src="https://img1.etsystatic.com/217/1/10139773/il_570xN.1313781353_ogra.jpg" alt=""> -->
@@ -120,7 +120,7 @@ $(window).on("load", function() {
             </div>
         </div>
         <!--Etsy Images -->
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-4 col-xs-12">
             <div class="panel panel-default">
                 <div id="img-thumbnails" class="panel-body text-center">
                     <h4>Paintings currently on Sale</h4>

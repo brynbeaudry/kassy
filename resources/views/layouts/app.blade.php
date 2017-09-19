@@ -52,12 +52,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                      <li><a href="">Upcoming Shows</a></li>
-                      <li><a href="">Upcoming Projects</a></li>
                       <li><a href="{{route('about')}}">About Kassandra</a></li>
-                      <li><a href="">Contact</a></li>
-                      <li><a href="">****************</a></li>
-                      <li><a href="">Cool Asterixes</a></li>
+                      <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#107;&#97;&#115;&#115;&#97;&#110;&#100;&#114;&#97;&#107;&#108;&#97;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" target="_blank">Contact</a></li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
