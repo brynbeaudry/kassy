@@ -3,11 +3,10 @@
   <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
   <link href="{{ asset('css/camera.css') }}" rel="stylesheet">
   <style media="screen">
-    /*.slide-thumbnails{
+    .slide-thumbnails{
         width: 10em;
         height: 10em;
     }
-    */
   /*This is how you can actually get the image*/
   /*
     .cameraSlide.cameracurrent {
@@ -59,42 +58,38 @@
         barPosition: 'top',
         time : 10000,
     });
-/*jQuery('#camera_wrap_2').camera({
-  height: '400px',
-  loader: 'bar',
-  pagination: false,
-  thumbnails: true
-});*/
+    /*
+    $('a.camera_link').on('click', function(event) {
+      event.preventDefault();
+      var that = this;
+      //Act on the event
+      var img_src = $(this).attr('href');
+      $("#img-modal").empty();
+      $("#img-modal").append($('<img>')
+        .attr("src", img_src)
+        .attr('height', '90%')
+        .attr('width', '90%' )
+        .addClass("img-responsive")
+      );
+      $("#show-modal").click();
+    });
+    */
   });
 </script>
 <script type="text/javascript">
-  $("a[rel*=leanModal]").leanModal({top: 50});
+  $("a[rel*=leanModal]").leanModal({top: 0});
 </script>
 <script type="text/javascript">
 $(window).on("load", function() {
-  /*
   $('.pix_thumb img').each(function(index, el) {
       $(el).addClass('slide-thumbnails');
   });
-  */
   console.log($('#camera_wrap div.camera_thumbs_cont > div > ul'));
   //$('#camera_wrap div.camera_thumbs_cont > div > ul').attr('style', 'margin-left: 0px');
 
 });
 
 //click an image to show it in a modal
-$('a.camera_link').on('click', function(event) {
-  event.preventDefault();
-  var that = this;
-  /* Act on the event */
-  var img_src = $(this).attr('href');
-  $("#img-modal").empty();
-  $("#img-modal").append($('<img>')
-    .attr("src", img_src)
-    .addClass("img-responsive")
-  );
-  $("#show-modal").click();
-});
 </script>
 @endsection
 @section('content')
@@ -145,7 +140,7 @@ $('a.camera_link').on('click', function(event) {
             </div>
         </div>
         <a href="#img-modal" id="show-modal" rel="leanModal" name="img-modal"></a>
-        <div id="img-modal" width="100%">
+        <div id="img-modal">
 
         </div>
     </div>

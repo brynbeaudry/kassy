@@ -32,6 +32,10 @@
  #app-navbar-collapse a {
   padding-left: .5em;
 }
+
+ #main-nav {
+   width: 100%;
+ }
 }
 
 #main-nav a.navbar-brand {

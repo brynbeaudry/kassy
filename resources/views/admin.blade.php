@@ -1,12 +1,15 @@
 @extends('layouts.app')
 @section('styles')
+<link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap-theme.min.css')}}" />
 <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 <link href="{{ asset('css/camera.css') }}" rel="stylesheet">
 <style media="screen">
 
-#welcome.container {
+#admin.container {
   margin-left: 1em;
   margin-right: 1em;
+  padding-top: 7em;
 }
 
 .gi-2x{font-size: 2em;}
@@ -30,6 +33,8 @@
 </style>
 @endsection
 @section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/include/bootstrap.min.js')}}"></script>
 <script type='text/javascript'  src="{{ asset('js/jquery.mobile.customized.min.js')}}"></script>
 <script type='text/javascript' src="{{ asset('js/load-image.all.min.js') }}"></script>
 <script type='text/javascript' src="{{ asset('js/jquery.Jcrop.js') }}"></script>
