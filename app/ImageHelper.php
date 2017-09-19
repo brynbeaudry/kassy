@@ -13,7 +13,7 @@ class ImageHelper
       $tmp_url = public_path($tmp_path);
       $local = Image::make($image_array['img'])
       /* resize only the height of the canvas */
-      ->resizeCanvas(1080, 1080)
+      ->resizeCanvas(1080, 1080, 'center', false, '#ffffff')
       /*resize the image to a height of 1080, constrain spect ration */
       ->resize(null,1080, function ($constraint) {
               $constraint->upsize();

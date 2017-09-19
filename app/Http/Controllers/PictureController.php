@@ -132,8 +132,7 @@ class PictureController extends Controller
     public function destroy($id)
     {
         //
-        Picture::destroy($picd);
-        return redirect()->route('admin');
-
+        Picture::destroy($id);
+        return response()->json(array("success" => 1, "redirect" => '/admin'), 200);
     }
 }

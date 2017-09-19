@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /home/bryn/scraping/kassklass/kassklass
+PATH=$PATH:/home/bryn/.local/bin
+export PATH
+#echo "$PATH"
+rm -f /home/bryn/www/kassy/storage/app/etsy/etsy.json
+/home/bryn/.local/bin/scrapy crawl kassetsy -t json -o - > /home/bryn/www/kassy/storage/app/etsy/etsy.json

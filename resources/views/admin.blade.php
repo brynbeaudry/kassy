@@ -72,7 +72,8 @@
         <div class="form-group" style="padding:14px;">
           <textarea class="form-control" placeholder="Description" name="text"></textarea>
         </div>
-        <button class="btn btn-primary pull-right" role="button" type="submit">Add Image to Gallery</button>
+        <button class="btn btn-primary pull-right" role="button" type="button" id="refresh-etsy">Refresh Etsy</button>
+        <button id="submit" class="btn btn-primary pull-right" role="button" type="submit" disabled="true">Add Image to Gallery</button>
       </form>
 
     </div>

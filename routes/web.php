@@ -24,6 +24,7 @@ Route::resource('posts', 'PostController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/refreshEtsy', 'AdminController@refreshEtsy');
 
 
 Route::get('/auth', 'Auth\LoginController@showLoginForm')->name('auth');
