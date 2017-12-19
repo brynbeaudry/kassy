@@ -9,6 +9,10 @@
   margin-right: 1em;
 }
 
+#about > div {
+  margin-top: 4em;
+}
+
 #lean_overlay {
   position: fixed;
   z-index:100;
@@ -36,7 +40,10 @@
 <script type='text/javascript' src="{{ asset('js/jquery.leanModal.min.js')}}"></script>
 <script>
 $(function(){
-  var height = $("#about > div > div:nth-child(1) > div > div").height()
+  let height = "100%"
+  if ($(window).width() > 420) {
+    height =  "" + $("#about > div > div:nth-child(1) > div > div").height() + "px"
+  }
   $('#camera_wrap').camera({
     loader: 'none',
     pagination: false,
@@ -44,7 +51,7 @@ $(function(){
     hover: false,
     opacityOnGrid: false,
     imagePath: '../images/',
-    height: '' + height + 'px',
+    height: height,
     barPosition: 'top',
     time : 5000
   });

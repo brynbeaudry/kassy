@@ -42,3 +42,7 @@
   text-align: center;
   margin-bottom: 1em;
 }
+/* So that any element is a certain distance away */
+#main-nav > div > div.navbar-header {
+  margin-bottom: 1em;
+}
