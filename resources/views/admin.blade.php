@@ -44,7 +44,7 @@
 
 @endsection
 @section('content')
-<div class="container" id="admin">
+<div class="container contain-main" id="admin">
   <div class="row">
     <!--Uploader Form -->
     <div class="col-md-6 col-xs-12">

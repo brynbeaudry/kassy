@@ -93,7 +93,7 @@ $(window).on("load", function() {
 </script>
 @endsection
 @section('content')
-<div class="container" id="welcome">
+<div class="container contain-main" id="welcome">
     <div class="row">
         <div class="col-md-8 col-xs-12">
             <div class="panel panel-default">

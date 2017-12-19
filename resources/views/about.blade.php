@@ -34,7 +34,6 @@
 <script type='text/javascript'  src="{{ asset('js/jquery.easing.1.3.js')}}"></script>
 <script type='text/javascript' src="{{ asset('js/camera.min.js')}}"></script>
 <script type='text/javascript' src="{{ asset('js/jquery.leanModal.min.js')}}"></script>
-</script>
 <script>
 $(function(){
   var height = $("#about > div > div:nth-child(1) > div > div").height()
@@ -47,9 +46,7 @@ $(function(){
     imagePath: '../images/',
     height: '' + height + 'px',
     barPosition: 'top',
-    time : 5000,
-
-
+    time : 5000
   });
   /*jQuery('#camera_wrap_2').camera({
   height: '400px',
@@ -61,7 +58,7 @@ $(function(){
 </script>
 @endsection
 @section('content')
-<div class="container" id="about">
+<div class="container contain-main" id="about">
   <div class="row">
     <div class="col-md-6 col-xs-12">
       <div class="panel panel-default">

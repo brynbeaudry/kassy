@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\App;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -42,10 +43,32 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
-    }
+     public function render($request, Exception $e)
+     {
+       if($this->isHttpException($e) &&  App::environment('production'))
+       {
+           switch ($e->getStatusCode())
+               {
+               // not found
+               case 404:
+               return redirect()->guest(route('welcome'));
+               break;
+
+               // internal error
+               case 500:
+               return redirect()->guest(route('welcome'));
+               break;
+
+               default:
+                   return redirect()->guest(route('welcome'));
+               break;
+           }
+       }else if($e instanceof \Illuminate\Session\TokenMismatchException &&  App::environment('production')) {
+             return redirect()->guest(route('login'));
+       }else{
+         return parent::render($request, $e);
+       }
+     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
